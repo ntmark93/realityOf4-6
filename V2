@@ -1,0 +1,340 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Péntek este van
+        // Start pont: Schönherz Kollégium
+        // Borároson öreglány helyátadás - extra
+        // Minden megállóban 2 lehetőség: leszállsz vagy továbbmész
+        // Mester utcánál fedél nélkül árus -
+        // Corvin tér és a Rákóczi között lehányhat egy csöves
+        // Blahánál egy BossFight - ha nyer irány a spanokhoz
+        // Nehézségi szint - Wesselényi, Király, Oktogon
+        // Nyugatinál egy parfüm árús - ha megveszed a parfümöt nem tudsz becsajozni
+        // Jászainál színvallatás
+        // Pozitív kimenetel: Hazaérünk egyben az értékeinkkel
+        // Negatív kimenetel: A detoxon kelt Zacher Gábor
+        // Blahán Gyrosozik a brigád
+
+        System.out.println("Üdvözlünk Kedves játékos, ezen hosszú hét pénteki napján a kalandod kezdetét veszi,");
+        System.out.println("utad a 4-6 felé vezet a bajtársaid a valahol városban várnak Téged, feladatod elhárítani az akadályokat és");
+        System.out.println("állomásról állomásra megtalálni őket!");
+        System.out.println();
+        System.out.println("A villamos elindult");
+        System.out.println("Hirtelen egy jellegzetes buké csapja meg az orrod," +
+                " ahhoz hogy elkerüld friss levegőre van szükséged");
+        int life = 100;
+        System.out.println("A következő állomás: Boráros tér");
+        int choice;
+        int shroom = 0;
+        int enemyLife = 100;
+        int round;
+        int streetcredit = 0;
+        boolean vomit = false;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("A horizonton feltűnik egy idős hölgy, és tekintetét rád szegezi");
+        System.out.println("Mit teszel most?");
+        System.out.println();
+        System.out.println("1. Felhangosítod a zenét");
+        System.out.println("2. Felkérdezed, hogy van-e valami az arcodon.");
+        System.out.println("3. Átadod az ülőhelyet.");
+        choice = scan.nextInt();
+        switch (choice) {
+            case 1 -> System.out.println("Szidni kezdi a fiatalságot és tovább áll");
+            case 2 -> {
+                System.out.println("Bokánrugott");
+                life -= 5;
+                System.out.println(life);
+            }
+            case 3 -> {
+                System.out.println("Amikor leült rádkacsint és így szól:" +
+                        "Lovagiasságod jutalma eme varázsgomba, mely hatása képes megbénítani bármelyik Ogrét!");
+                shroom += 1;
+                System.out.println("Varázsgombák száma: " + shroom);
+            }
+        }
+        System.out.println();
+        System.out.println("A következő állomás: Mester utca");
+        System.out.println("Mit teszel most?");
+        System.out.println();
+        System.out.println("1. Femtmaradsz a villamoson");
+        System.out.println("2. Leszállsz a villamosról");
+        choice = scan.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.println("Egy jólszituált bátyja 'Fedélnélkülle' kínál");
+                System.out.println("Mit teszel most?");
+                System.out.println();
+                System.out.println("1. Adsz neki pénzt");
+                System.out.println("2. Azt mondod csak kártya van nálad");
+                int subchoice = scan.nextInt();
+                switch (subchoice) {
+                    case 1 -> {
+                        System.out.println("Bátyja szája mosolyra görbül és továbbáll");
+                        vomit = false;
+                    }
+                    case 2 -> {
+                        System.out.println("Átkozódás közepedte továbbáll");
+                        vomit = true;
+                    }
+                }
+            }
+            case 2 -> {
+                System.out.println("Rádkiabál egy ork és visszaszállsz a szekérre");
+                vomit = true;
+                life -= 5;
+            }
+        }
+        System.out.println("A következő állomás: Corvin-negyed");
+        System.out.println("Mit teszel most?");
+        System.out.println();
+        System.out.println("1. Femtmaradsz a villamoson");
+        System.out.println("2. Leszállsz a villamosról");
+        choice = scan.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.println("Egy illuminált társaság érkezik 2 ajtóval odébb");
+                vomit = true;
+                life -= 5;
+            }
+            case 2 -> System.out.println("Leszállsz körülnézni, rágyújtasz de nem találod a társaid. Visszaszállsz!");
+        }
+        System.out.println("A következő állomás: Harminckettesek-tere");
+        System.out.println("Mit teszel most?");
+        System.out.println();
+        System.out.println("1. Femtmaradsz a villamoson");
+        System.out.println("2. Leszállsz a villamosról");
+        choice = scan.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.println("Az illuminált társaság 1 ajtóval közelebb lopakodik");
+                life -= 5;
+            }
+            case 2 -> System.out.println("Leszállsz körülnézni, rágyújtasz de nem találod a társaid. Visszaszállsz!");
+        }
+        System.out.println("A következő állomás: Rákóczi tér");
+        System.out.println("Mit teszel most?");
+        System.out.println();
+        System.out.println("1. Femtmaradsz a villamoson");
+        System.out.println("2. Leszállsz a villamosról");
+        choice = scan.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.println("Az illuminált társaság melléd érkezik");
+                if (vomit == true) {
+                    System.out.println("A társaság egyik tagja rád üríti gyomra tartalmát");
+                    life -= 20;
+                }
+            }
+            case 2 -> {
+                System.out.println("Leszállsz körülnézni, rágyújtasz de nem találod a társaid. Visszaszállsz!" +
+                        " Egy illuminált társaság melléd érkezik");
+                if (vomit == true) {
+                    System.out.println("A társaság egyik tagja rád üríti gyomra tartalmát");
+                    life -= 20;
+                }
+            }
+
+        }
+        System.out.println("A következő állomás: -> BLAHA LUJZA TÉR <-");
+        System.out.println("Mit teszel most?");
+        System.out.println();
+        System.out.println("1. Femtmaradsz a villamoson");
+        System.out.println("2. Leszállsz a villamosról");
+        choice = scan.nextInt();
+
+        Scanner scann = new Scanner(System.in);
+        if (shroom >= 1) {
+
+            System.out.println("Egyszercsak egy Ogre kezét érzed a válladon, majd a harcmezőn találod magad." +
+                    "Az Ogre így szól: Késülja a harcra");
+            System.out.println();
+            System.out.println("Eszedbe jutnak az öregány szavai: ");
+            System.out.println("Lovagiasságod jutalma eme varázsgomba, mely hatása képes megbénítani bármelyik Ogrét");
+            System.out.println();
+            System.out.println("1. Felkínálod neki a varázsgombát");
+            System.out.println("2. Megpróbálsz visszaszállni a villamosra");
+            choice = scann.nextInt();
+            if (choice == 1) {
+                System.out.println("Meg akarsz mérgezni tán, kérdi az Ogre? Elfelezem veled, hogy lássam nem a szándékaid tiszták");
+                System.out.println();
+                System.out.println("1. Közösen megeszitek");
+                System.out.println("2. Visszautasítod");
+                choice = scann.nextInt();
+                if (choice == 1) {
+                    System.out.println("Átadod neki, majd így szól: Tavesz baktalo!");
+                    enemyLife -= 100;
+                    System.out.println("Az ellenfél: " + enemyLife);
+                    System.out.println("'Még nem veszíthetek, még nem, még élni akarok'");
+                    streetcredit += 50;
+                    System.out.println("StreetCredid: " + streetcredit);
+                    life -= 35;
+                    System.out.println("Harckedv: " + life);
+                    System.out.println("Megvárod a következő villamost és felszállsz rá!");
+                } else if (choice == 2) {
+                    System.out.println("Készülj a harcra!");
+                    System.out.println("Az ellenfél harckedve: " + enemyLife);
+                    System.out.println("Harckedv " + life);
+                    Scanner fight = new Scanner(System.in);
+                    int rocky;
+                    int attackPowa = 30;
+                    int enemyAttackPower = 20;
+                    while (life > 0 && enemyLife > 0) {
+                        round = 1;
+                        System.out.println("Round: " + round);
+                        System.out.println("1. Támadás");
+                        System.out.println("2. Védekezés");
+                        rocky = scann.nextInt();
+                        if (rocky == 1) {
+                            int damageDealt = attackPowa;
+                            System.out.println("You attack the enemy and deal " + damageDealt + " damage.");
+                            enemyLife -= damageDealt;
+                        } else if (rocky == 2) {
+                            System.out.println("You defend yourself.");
+                        } else {
+                            System.out.println("Invalid choice. You lose your turn.");
+                        }
+                        if (enemyLife <= 0) {
+                            System.out.println("Congratulations, you have won the game!");
+                            break;
+                        }
+                        System.out.println("Enemy's turn:");
+                        int enemyChoice = (int) (Math.random() * 2) + 1;
+                        if (enemyChoice == 1) {
+                            int damageDealt = enemyAttackPower;
+                            System.out.println("The enemy attacks you and deals " + damageDealt + " damage.");
+                            attackPowa -= damageDealt;
+                        } else {
+                            System.out.println("The enemy defends itself.");
+                        }
+                        if (attackPowa <= 0) {
+                            System.out.println("Game over. You have lost.");
+                            life -= 40;
+                            System.out.println("Lezúztak, mássz vissza a járműre.");
+                            System.out.println(life);
+                            break;
+                        }
+                        round++;
+                    }
+                    fight.close();
+                }
+            } else if (choice == 2) {
+                System.out.println("Egyszercsak egy Ogre kezét érzed a válladon, majd a harcmezőn találod magad." +
+                        "Az Ogre így szól: Késülja a harcra");
+                System.out.println();
+                System.out.println("Az ellenfél harckedve: " + enemyLife);
+                System.out.println("Harckedv " + life);
+                Scanner fight = new Scanner(System.in);
+                int rocky;
+                int attackPowa = 30;
+                int enemyAttackPower = 20;
+                while (life > 0 && enemyLife > 0) {
+                    round = 1;
+                    System.out.println("Round: " + round);
+                    System.out.println("1. Támadás");
+                    System.out.println("2. Védekezés");
+                    rocky = scann.nextInt();
+                    if (rocky == 1) {
+                        int damageDealt = attackPowa;
+                        System.out.println("You attack the enemy and deal " + damageDealt + " damage.");
+                        enemyLife -= damageDealt;
+                    } else if (rocky == 2) {
+                        System.out.println("You defend yourself.");
+                    } else {
+                        System.out.println("Invalid choice. You lose your turn.");
+                    }
+                    if (enemyLife <= 0) {
+                        System.out.println("Congratulations, you have won the game!");
+                        break;
+                    }
+                    System.out.println("Enemy's turn:");
+                    int enemyChoice = (int) (Math.random() * 2) + 1;
+                    if (enemyChoice == 1) {
+                        int damageDealt = enemyAttackPower;
+                        System.out.println("The enemy attacks you and deals " + damageDealt + " damage.");
+                        attackPowa -= damageDealt;
+                    } else {
+                        System.out.println("The enemy defends itself.");
+                    }
+                    if (attackPowa <= 0) {
+                        System.out.println("Game over. You have lost.");
+                        life -= 40;
+                        System.out.println("Lezúztak, mássz vissza a járműre.");
+                        System.out.println(life);
+                        break;
+                    }
+                    round++;
+                }
+                fight.close();
+            }
+        } else if (shroom < 1) {
+            System.out.println("Egyszercsak egy Ogre kezét érzed a válladon, majd a harcmezőn találod magad." +
+                    "Az Ogre így szól: Késülja a harcra");
+            System.out.println();
+            System.out.println("Az ellenfél harckedve: " + enemyLife);
+            System.out.println("Harckedv " + life);
+            Scanner fight = new Scanner(System.in);
+            int rocky;
+            int attackPowa = 30;
+            int enemyAttackPower = 20;
+            while (life > 0 && enemyLife > 0) {
+                round = 1;
+                System.out.println("Round: " + round);
+                System.out.println("1. Támadás");
+                System.out.println("2. Védekezés");
+                rocky = scann.nextInt();
+                if (rocky == 1) {
+                    int damageDealt = attackPowa;
+                    System.out.println("You attack the enemy and deal " + damageDealt + " damage.");
+                    enemyLife -= damageDealt;
+                } else if (rocky == 2) {
+                    System.out.println("You defend yourself.");
+                } else {
+                    System.out.println("Invalid choice. You lose your turn.");
+                }
+                if (enemyLife <= 0) {
+                    System.out.println("Congratulations, you have won the game!");
+                    break;
+                }
+                System.out.println("Enemy's turn:");
+                int enemyChoice = (int) (Math.random() * 2) + 1;
+                if (enemyChoice == 1) {
+                    int damageDealt = enemyAttackPower;
+                    System.out.println("The enemy attacks you and deals " + damageDealt + " damage.");
+                    attackPowa -= damageDealt;
+                } else {
+                    System.out.println("The enemy defends itself.");
+                }
+                if (attackPowa <= 0) {
+                    System.out.println("Game over. You have lost.");
+                    life -= 40;
+                    System.out.println("Lezúztak, mássz vissza a járműre.");
+                    break;
+                }
+                round++;
+            }
+            fight.close();
+        }
+        System.out.println();
+        System.out.println("A következő megálló: Király utca");
+        System.out.println("Mit teszel most?");
+        System.out.println();
+        System.out.println("1. Fentmaradsz a villamoson.");
+        System.out.println("2. Leszállsz  villamosról.");
+
+        // BossFight:
+        // Case 1:( if )Amennyiben az öreglánytól kapott negrót-->varázsgombát, felkínálod az orknak a fight elmarad, de neked
+        // is enned kell. Ettől a life 50-el csökken, de a streetcredited felmegy 50-el
+        // Ha ezt követően elmondod a varázsigét a life visszatölt 100-ra
+        // Case 2: Az ujságostól --> kapott varázsigét elmondod az orknak, 50-50 az esélye, hogy elkerülöd a fightot
+
+        // Wesselényi:
+        // Case 1: Leszállsz a villamosról és ha a streetcredited legalább 50 egy csapat fiatal varázsport kínál
+        // a BossFight-nál látott győzelem miatt.
+        // Case 2: Fentmaradsz és a következő megállóhoz mész
+
+        // Király utca:
+        // Case 1:
+        // Case 2:
+    }
+}
